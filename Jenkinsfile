@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-              withDockerRegistry(credentialsId: 'RunDockerImage',url:'https://index.docker.io/v1/') {
+              withDockerRegistry(credentialsId: 'RunDockerImage',url: 'https://github.com/DucAnh1303/JenkinsDeploy.git') {
               					sh 'docker build -t ducanh1398/jenkins:jenkins .'
               					sh 'docker push ducanh1398/jenkins:jenkins'
              }
