@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-              withDockerRegistry(credentialsId: 'RunDockerImage',url: 'https://github.com/DucAnh1303/JenkinsDeploy.git') {
+              withDockerRegistry(credentialsId: 'dockerhub',url: 'https://github.com/DucAnh1303/JenkinsDeploy.git') {
               					sh 'docker build -t ducanh1398/jenkins:jenkins .'
               					sh 'docker push ducanh1398/jenkins:jenkins'
              }
@@ -29,5 +29,10 @@ pipeline {
                 }
             }
         }
+    }
+    post {
+        always{
+               clearWs()
+            }
     }
 }
