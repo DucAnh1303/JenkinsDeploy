@@ -1,16 +1,17 @@
 pipeline {
     agent any
 
-    tools {
-        gradlew 'gradle_7'
+    tools{
+        gradle 'gradle_7'
     }
 
-    stages{
-        stage('Build gradle'){
-              steps{
-                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/DucAnh1303/JenkinsDeploy']])
-                sh './gradlew clean build'
-             }
+    stages {
+        stage('build') {
+           steps {
+               sh './gradlew --version'
+               sh 'java --version'
+               sh './gradlew clean build'
+           }
         }
     }
 }
