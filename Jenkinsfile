@@ -8,9 +8,9 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'gradle --version'
+                sh './gradlew --version'
                 sh 'java --version'
-                sh ''
+                sh './gradlew clean build'
             }
         }
         stage('Build Docker Image') {
