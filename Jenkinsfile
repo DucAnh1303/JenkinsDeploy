@@ -9,7 +9,7 @@ pipeline {
         stage('build') {
            steps {
                // Kiểm tra phiên bản Gradle và Java
-               sh 'gradle --version'
+               sh 'gradlew --version'
                sh 'java --version'
                // Clean project
                sh './gradlew clean'
