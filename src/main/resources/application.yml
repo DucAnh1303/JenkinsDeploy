@@ -1,0 +1,21 @@
+spring:
+  application:
+      name: jenkins
+
+
+  datasource:
+    url: jdbc:mysql://98.82.172.43:3306/manage
+    username: manage
+    password: 123456789
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+
+
+server:
+  port: 9091
