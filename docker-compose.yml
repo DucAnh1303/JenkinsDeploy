@@ -12,6 +12,12 @@ services:
       - "13306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
+    networks:
+      - jenkins_network
+
+networks:
+  jenkins_network:
+    driver: bridge
 
 volumes:
     mysql_data:
