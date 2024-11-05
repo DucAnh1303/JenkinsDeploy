@@ -4,11 +4,11 @@ WORKDIR /app
 
 COPY . /app
 
-RUN chmod +x ./gradlew clean build
+RUN chmod +x ./gradlew && ./gradlew clean build
 
 FROM openjdk:17-slim
 
-COPY /build/libs/jenkins-0.0.1-SNAPSHOT.jar /app/jenkins.jar
+COPY --from=build /app/build/libs/jenkins-0.0.1-SNAPSHOT.jar /app/jenkins.jar
 
 EXPOSE 9091
 
