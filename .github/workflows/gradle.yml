@@ -34,7 +34,7 @@ jobs:
 #      uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
       uses: gradle/actions/setup-gradle@v4
       with:
-        gradle-version: '3.3.5'  # Specified Gradle version
+        gradle-version: 'latest'  # Specified Gradle version
         cache-enabled: true
 
     - name: Build with Gradle Wrapper
