@@ -8,6 +8,7 @@ class JenkinsApplicationTests {
 
 	@Test
 	void contextLoads() {
+		System.out.println("success");
 	}
 
 }
