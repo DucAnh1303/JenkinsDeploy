@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY . /app
 
-RUN ./gradlew clean build
+RUN chmod +x ./gradlew clean build
 
 FROM openjdk:17-slim
 
