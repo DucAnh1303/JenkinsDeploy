@@ -3,6 +3,7 @@ package com.service.jenkins.controller;
 import com.service.jenkins.entity.ManageEntity;
 import com.service.jenkins.request.ManageRequest;
 import com.service.jenkins.service.ManageService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +28,7 @@ public class Controller {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<?> save(@RequestBody ManageRequest request) {
+    public ResponseEntity<?> save( @RequestBody @Valid ManageRequest request) {
         return new ResponseEntity<>(manageService.created(request), HttpStatus.CREATED);
     }
 
