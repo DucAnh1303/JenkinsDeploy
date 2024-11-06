@@ -24,14 +24,12 @@ public class ManageServiceImpl implements ManageService {
                 .withIgnoreNullValues()
                 .withIgnoreCase() // Bỏ qua phân biệt hoa thường
                 .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING); // Sử dụng LIKE cho các trường String
-        Example<ManageEntity> example;
-        if (entity != null){
-            example = Example.of(entity, matcher);
 
-        }else {
-            example = Example.of(new ManageEntity());
+        if (entity.getId() != null || entity.getDescription() != null || entity.getName() != null) {
+            Example<ManageEntity> example = Example.of(entity, matcher);
+            return manageRepository.findAll(example);
         }
-        return manageRepository.findAll(example);
+        return manageRepository.findAll();
     }
 
     @Override

@@ -4,8 +4,8 @@ git pull origin master
 
 ./gradlew clean build -x test
 
-docker stop run_project_jenkins || true
-docker rm run_project_jenkins || true
+docker stop application || true
+docker rm application || true
 
 docker build -t run_project_jenkins .
 
