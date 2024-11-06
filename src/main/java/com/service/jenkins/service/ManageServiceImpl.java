@@ -3,6 +3,7 @@ package com.service.jenkins.service;
 import com.service.jenkins.entity.ManageEntity;
 import com.service.jenkins.repository.ManageRepository;
 import com.service.jenkins.request.ManageRequest;
+import com.service.jenkins.request.ManageSearch;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
@@ -17,7 +18,7 @@ public class ManageServiceImpl implements ManageService {
     private final ManageRepository manageRepository;
 
     @Override
-    public List<ManageEntity> findAll(ManageEntity entity) {
+    public List<ManageEntity> findAll(ManageSearch search) {
 
 
         ExampleMatcher matcher = ExampleMatcher.matching()
@@ -25,8 +26,8 @@ public class ManageServiceImpl implements ManageService {
                 .withIgnoreCase() // Bỏ qua phân biệt hoa thường
                 .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING); // Sử dụng LIKE cho các trường String
 
-        if (entity.getId() != null || entity.getDescription() != null || entity.getName() != null) {
-            Example<ManageEntity> example = Example.of(entity, matcher);
+        if (search.getId() != null || search.getDescription() != null || search.getName() != null) {
+            Example<ManageEntity> example = Example.of(new ManageEntity(search.getId(),search.getName(),search.getDescription()), matcher);
             return manageRepository.findAll(example);
         }
         return manageRepository.findAll();

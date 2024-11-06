@@ -2,6 +2,7 @@ package com.service.jenkins.controller;
 
 import com.service.jenkins.entity.ManageEntity;
 import com.service.jenkins.request.ManageRequest;
+import com.service.jenkins.request.ManageSearch;
 import com.service.jenkins.service.ManageService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +19,7 @@ public class Controller {
 
 
     @GetMapping("/search")
-    public ResponseEntity<?> getAll(@RequestBody ManageEntity search) {
+    public ResponseEntity<?> getAll(@RequestBody ManageSearch search) {
         return new ResponseEntity<>(manageService.findAll(search), HttpStatus.OK);
     }
 
