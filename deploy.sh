@@ -16,16 +16,16 @@ echo "Clean và build dự án với Gradle..."
 
 # Dừng và xóa container cũ (nếu có)
 echo "Dừng và xóa container cũ (nếu có)..."
-docker stop application || true
-docker rm application || true
+sudo docker stop application || true
+sudo docker rm application || true
 
 # Xây dựng lại Docker image
 echo "Build lại Docker image..."
-docker build -t run_project_jenkins .
+sudo docker build -t run_project_jenkins .
 
 # Chạy container mới với cổng 9091
 echo "Chạy Docker container với ứng dụng mới..."
-docker run -d -p 9091:9091 --name application run_project_jenkins
+sudo docker run -d -p 9091:9091 --name application run_project_jenkins
 
 # Kiểm tra xem container đã chạy chưa
 if [ "$(docker ps -q -f name=application)" ]; then
