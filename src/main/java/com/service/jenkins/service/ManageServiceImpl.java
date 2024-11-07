@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class ManageServiceImpl implements ManageService {
                 .withIgnoreCase() // Bỏ qua phân biệt hoa thường
                 .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING); // Sử dụng LIKE cho các trường String
 
-        if (search.getId() != null || search.getDescription() != null || search.getName() != null) {
+        if (!ObjectUtils.isEmpty(search.getId()) || !ObjectUtils.isEmpty(search.getName())  || !ObjectUtils.isEmpty(search.getDescription()) ) {
             Example<ManageEntity> example = Example.of(new ManageEntity(search.getId(),search.getName(),search.getDescription()), matcher);
             return manageRepository.findAll(example);
         }
