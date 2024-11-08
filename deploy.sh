@@ -14,8 +14,8 @@ echo "Pull code mới từ repository Git..."
 git pull origin master
 
 # Clean và build ứng dụng bằng Gradle (bỏ qua test để tiết kiệm thời gian)
-echo "Clean và build dự án với Gradle..."
-./gradlew clean build -x test
+#echo "Clean và build dự án với Gradle..."
+#./gradlew clean build -x test
 
 # Dừng và xóa container cũ (nếu có)
 echo "Dừng và xóa container cũ (nếu có)..."
