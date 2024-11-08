@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Thiết lập biến môi trường cho SSH agent (nếu cần)
-eval $(ssh-agent -s)
-ssh-add ~/.ssh/id_rsa
+#eval $(ssh-agent -s)
+#ssh-add ~/.ssh/id_rsa
 # Thông báo bắt đầu deploy
 echo "Bắt đầu deploy ứng dụng..."
 
@@ -19,8 +19,8 @@ echo "Clean và build dự án với Gradle..."
 
 # Dừng và xóa container cũ (nếu có)
 echo "Dừng và xóa container cũ (nếu có)..."
-sudo docker stop application || true
-sudo docker rm application || true
+sudo docker stop application
+sudo docker rm application
 
 # Xây dựng lại Docker image
 echo "Build lại Docker image..."
