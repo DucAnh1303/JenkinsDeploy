@@ -70,15 +70,15 @@ jobs:
       # See: https://github.com/gradle/actions/blob/main/dependency-submission/README.md
       - name: Generate and submit dependency graph
         uses: gradle/actions/dependency-submission@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: SSH vào EC2 và chạy deploy
-        uses: actions/checkout@v4
-        with:
-          host: <EC2_IP>
-          username: <EC2_User>
-          key: ${{ secrets.EC2_SSH_KEY }}
-          script: |
-            cd /path/to/your/project
-            ./deploy.sh
+#  deploy:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: SSH vào EC2 và chạy deploy
+#        uses: actions/checkout@v4
+#        with:
+#          host: <EC2_IP>
+#          username: <EC2_User>
+#          key: ${{ secrets.EC2_SSH_KEY }}
+#          script: |
+#            cd /path/to/your/project
+#            ./deploy.sh

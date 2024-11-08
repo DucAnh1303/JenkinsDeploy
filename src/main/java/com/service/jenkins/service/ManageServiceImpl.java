@@ -20,14 +20,12 @@ public class ManageServiceImpl implements ManageService {
 
     @Override
     public List<ManageEntity> findAll(ManageSearch search) {
-
-
-        ExampleMatcher matcher = ExampleMatcher.matching()
-                .withIgnoreNullValues()
-                .withIgnoreCase() // Bỏ qua phân biệt hoa thường
-                .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING); // Sử dụng LIKE cho các trường String
-
         if (!ObjectUtils.isEmpty(search.getId()) || !ObjectUtils.isEmpty(search.getName())  || !ObjectUtils.isEmpty(search.getDescription()) ) {
+            ExampleMatcher matcher = ExampleMatcher.matching()
+                    .withIgnoreNullValues()
+                    .withIgnoreCase() // Bỏ qua phân biệt hoa thường
+                    .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING); // Sử dụng LIKE cho các trường String
+
             Example<ManageEntity> example = Example.of(new ManageEntity(search.getId(),search.getName(),search.getDescription()), matcher);
             return manageRepository.findAll(example);
         }
