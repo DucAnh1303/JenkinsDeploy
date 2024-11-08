@@ -7,6 +7,9 @@ ssh-add ~/.ssh/id_rsa
 echo "Bắt đầu deploy ứng dụng..."
 
 # Cập nhật code từ Git
+echo "Fetch code mới từ repository Git..."
+git fetch
+
 echo "Pull code mới từ repository Git..."
 git pull origin master
 
